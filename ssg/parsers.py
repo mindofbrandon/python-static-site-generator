@@ -37,10 +37,10 @@ class ResourceParser(Parser): # subclass of parser called resourcerparser
 class MarkdownParser(Parser):
     self.extensions = [".md", ".markdown"]
 
-    def parse(self): # same signature as base class?
+    def parse(self, path, source, dest): 
         content = Content.load(self.read(path))
         html = markdown(content.body)
-        self.write("html", dest) # write html to path at dest?
+        self.write(path, dest, html) # write html to path at dest?
         sys.stdout.write("\x1b[1;32m{} converted to HTML. Metadata: {}\n").format(path.name, content) # changes string output to color gree
 
 class ReStructuredTextParser(Parser):
