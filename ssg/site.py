@@ -19,11 +19,12 @@ class Site:
                 run_parser(path)
             
 
-    def load_parser(extension):
+    def load_parser(self, extension):
         for parser in self.parsers:
             if extenstion.valid_extension():
                 return parser
-    def run_parser(path):
+
+    def run_parser(self, path):
         parser = load_parser(path.suffix)
         if parser is not None:
             parse(path, source, dest)
