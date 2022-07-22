@@ -9,7 +9,7 @@ class Parser:
         return extension in self.extensions
 
     def parse(self, path: Path, source: Path, dest: Path):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def read(self, path):
         with open(path, 'r') as file:
@@ -26,5 +26,5 @@ class Parser:
 class ResourceParser(Parser): # subclass of parser called resourcerparser
     extensions = [".jpg", ".png", ".gif", ".css", ".html"]
 
-    def parse(self, path: Path, source: Path, dest: Path):
+    def parse(self, path, source, dest):
         self.copy(path, source, dest)
