@@ -16,3 +16,27 @@ class Content(Mapping):
     def __init__(self, metadata, content):
         self.data = metadata
         self.data["content"] = content
+
+    @property
+    def body(self):
+        return self.data["content"]
+
+    @property
+    def type(self):
+        if self.data == "type":
+            return self.data["type"]
+        else:
+            return None
+    
+    @type.setter
+    def type(self):
+        self.data["type"] = type
+
+    def __getitem__(self):
+        return self.data[self.values()]
+    
+    def __iter__(self):
+        self.data
+    
+    def __len__(self):
+        return len(self.data)
