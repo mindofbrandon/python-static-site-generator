@@ -1,6 +1,11 @@
 from typing import List
 from pathlib import Path
 import shutil
+import sys
+from docutils.core import publish_parts
+from markdown import markdown
+from ssg.content import Content
+
 
 class Parser:
     extensions: List[str] = [] # this feels verbose, is this correct styling?
@@ -28,3 +33,15 @@ class ResourceParser(Parser): # subclass of parser called resourcerparser
 
     def parse(self, path, source, dest):
         self.copy(path, source, dest)
+
+class MarkdownParser(Parser):
+    self.extensions = [".md", ".markdown"]
+
+    def parse(self): # same signature as base class?
+        content = Content.load(self.read(path))
+        html = markdown(content.body)
+        self.write("html", dest) # write html to path at dest?
+        sys.stdout.write("\x1b[1;32m{} converted to HTML. Metadata: {}\n").format(path.name, content) # changes string output to color gree
+
+class ReStructuredTextParser(Parser):
+    extensions = [".rst"]
