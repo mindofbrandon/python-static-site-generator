@@ -2,7 +2,7 @@ from typing import List
 from pathlib import Path
 
 class Parser:
-    extensions = List[str] = [] # this feels verbose, is this correct styling?
+    extensions: List[str] = [] # this feels verbose, is this correct styling?
 
     def valid_extension(self, extension):
         return extension in self.extensions
