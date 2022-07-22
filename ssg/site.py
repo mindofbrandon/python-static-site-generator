@@ -15,3 +15,18 @@ class Site:
         for path in self.source.rglob("*"):
             if path.is_dir():
                 self.create_dir(path)
+            elif path.is_file():
+                run_parser(path)
+            
+
+    def load_parser(extension):
+        for parser in self.parsers:
+            if extenstion.valid_extension():
+                return parser
+    def run_parser(path):
+        parser = load_parser(path.suffix)
+        if parser is not None:
+            parse(path, source, dest)
+        else:
+            print("Not Implemented.")
+        
