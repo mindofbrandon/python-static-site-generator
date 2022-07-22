@@ -2,12 +2,12 @@ from typing import List
 from pathlib import Path
 
 class Parser:
-    extensions = [str]
+    extensions = List[str] = [] # this feels verbose, is this correct styling?
 
     def valid_extension(self, extension):
         return extension in self.extensions
 
-    def parse(self, path, source, dest):
+    def parse(self, path: Path, source: Path, dest: Path):
         raise NotImplementedError()
 
     def read(self, path):
@@ -15,4 +15,4 @@ class Parser:
             return file.read()
 
     def write(self, path, dest, content, ext=".html"):
-        full_path = self.dest / path.with_suffix(ext).name
+        full_path = dest / path.with_suffix(ext).name
