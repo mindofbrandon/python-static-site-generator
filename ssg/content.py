@@ -29,14 +29,14 @@ class Content(Mapping):
             return None
     
     @type.setter
-    def type(self):
+    def type(self, type):
         self.data["type"] = type
 
-    def __getitem__(self):
-        return self.data[self.values()]
+    def __getitem__(self, key):
+        return self.data[key]
     
     def __iter__(self):
-        self.data
+        self.data.__iter__()
     
     def __len__(self):
         return len(self.data)
